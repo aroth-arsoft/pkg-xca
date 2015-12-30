@@ -1,0 +1,34 @@
+From 4933b07359e99247f16117d60842b42d06d14c27 Mon Sep 17 00:00:00 2001
+From: Tino Mettler <tino@tikei.de>
+Date: Thu, 23 Oct 2014 11:37:22 +0200
+Subject: [PATCH] Fix undefined reference to symbol
+ '__cxa_free_exception@@CXXABI_1.3'
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix a linker error ld: /«PKGBUILDDIR»/lib/db_key.o: undefined reference to symbol '__cxa_free_exception@@CXXABI_1.3'
+by using a patch from YunQiang Su.
+
+Closes: #713672, #762419
+Thanks: YunQiang Su <wzssyqa@gmail.com>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index 29ee96c..013a52e 100755
+--- a/configure
++++ b/configure
+@@ -189,7 +189,7 @@ if test "$#" = "0" && test -z "$DARWIN" && test -z "$QTDIR" && \
+    pkg-config QtGui openssl --libs >/dev/null;
+ then
+   CF="`pkg-config QtGui openssl --cflags`"
+-  LIBS="`pkg-config QtGui openssl --libs` -lltdl"
++  LIBS="`pkg-config QtGui openssl --libs` -lltdl -lstdc++"
+ else
+   by_hand=true
+ fi
+-- 
+2.1.3
+
