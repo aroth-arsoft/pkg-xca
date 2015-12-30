@@ -1,3 +1,9 @@
+xca (1.3.2-0.1~aroth~ppa4) wily; urgency=medium
+
+  * add qttools5-dev-tools as well
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Wed, 30 Dec 2015 14:48:10 +0100
+
 xca (1.3.2-0.1~aroth~ppa3) wily; urgency=medium
 
   * require qt5-default
