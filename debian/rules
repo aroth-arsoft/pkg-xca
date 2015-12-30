@@ -7,7 +7,7 @@ configure: Local.mak
 
 Local.mak:
 	dh_testdir
-	CF=$(CPPFLAGS) docdir=/usr/share/doc/xca prefix=/usr ./configure
+	CF=$(CPPFLAGS) ./configure --docdir=/usr/share/doc/xca --prefix=/usr
 
 build-arch: build
 
@@ -24,12 +24,14 @@ clean:
 	dh_testroot
 	rm -f build-stamp
 	$(MAKE) distclean
+	-rm -f doc/*.gz
+	-rm -f lib/xca_db_stat
 	dh_clean 
 
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 	dh_installdirs
 	$(MAKE) destdir=$(CURDIR)/debian/xca/ install
 	rm -rf $(CURDIR)/debian/xca/usr/man
@@ -55,7 +57,7 @@ binary-arch: build install
 
 binary: binary-indep binary-arch
 
-UPSTREAMTAG=upstream/1.0.0
+UPSTREAMTAG=upstream/1.3.2
 SOURCEPKG=$(shell dpkg-parsechangelog | sed  -n 's/^Source: \(.*\)/\1/p')
 UPSTREAM=$(shell dpkg-parsechangelog |  sed -n 's/^Version: \(.*\)-[^-]*/\1/p')
 ORIG=${SOURCEPKG}_${UPSTREAM}.orig.tar.gz

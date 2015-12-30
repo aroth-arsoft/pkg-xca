@@ -2,8 +2,8 @@ Source: xca
 Section: x11
 Priority: optional
 Maintainer: Tino Mettler <tino+debian@tikei.de>
-Build-Depends: debhelper (>= 5), libqt4-dev (>= 4.2), libssl-dev, linuxdoc-tools, libltdl-dev, pkg-config, dpkg-dev (>= 1.16.1~)
-Standards-Version: 3.9.3
+Build-Depends: debhelper (>= 9), qtbase5-dev, libssl-dev, linuxdoc-tools, libltdl-dev, pkg-config, dpkg-dev (>= 1.16.1~)
+Standards-Version: 3.9.6
 Homepage: http://xca.sourceforge.net
 Vcs-Git: http://git.hohnstaedt.de/xca.git
 
